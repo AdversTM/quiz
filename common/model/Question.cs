@@ -1,10 +1,10 @@
 ﻿using System;
 using System.Linq;
 using System.Runtime.CompilerServices;
-using generator.util;
-using generator.viewmodel;
+using common.util;
+using common.viewmodel;
 
-namespace generator.model {
+namespace common.model {
     public class Question : ViewModelBase, IComparable<Question>, ICloneable, IChangeable {
         private string _text;
         private Answer[] _answers;

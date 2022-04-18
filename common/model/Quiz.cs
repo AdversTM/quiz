@@ -2,10 +2,10 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.Text.RegularExpressions;
-using generator.util;
-using generator.viewmodel;
+using common.util;
+using common.viewmodel;
 
-namespace generator.model {
+namespace common.model {
     public class Quiz : ViewModelBase, ICloneable {
         private long _time;
         public string Name { get; set; }

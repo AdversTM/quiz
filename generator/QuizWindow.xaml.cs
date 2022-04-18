@@ -2,9 +2,9 @@
 using System.Windows;
 using System.Windows.Controls;
 using System.Windows.Controls.Primitives;
+using common.model;
+using common.util;
 using generator.data;
-using generator.model;
-using generator.util;
 using generator.viewmodel;
 
 namespace generator {

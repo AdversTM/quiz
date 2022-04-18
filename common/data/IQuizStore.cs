@@ -1,4 +1,4 @@
-﻿using generator.model;
+﻿using common.model;
 
 namespace generator.data {
     public interface IQuizStore {

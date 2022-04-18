@@ -1,8 +1,8 @@
 ﻿using System;
 using System.IO;
 using System.Windows;
+using common.model;
 using generator.data;
-using generator.model;
 
 namespace generator {
     public partial class App {

@@ -2,7 +2,7 @@
 using System.Collections.Generic;
 using System.Collections.ObjectModel;
 
-namespace generator.util {
+namespace common.util {
     public static class CollectionUtil {
         public static List<T> Clone<T>(this Collection<T> collection) where T : ICloneable {
             var list = new List<T>(collection.Count);

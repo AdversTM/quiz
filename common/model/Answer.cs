@@ -1,6 +1,6 @@
 ﻿using System;
 
-namespace generator.model {
+namespace common.model {
     public class Answer : ICloneable {
         public string Text { get; set; }
         public bool IsCorrect { get; set; }

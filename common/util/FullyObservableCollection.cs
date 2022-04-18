@@ -4,7 +4,7 @@ using System.Collections.ObjectModel;
 using System.Collections.Specialized;
 using System.ComponentModel;
 
-namespace generator.util {
+namespace common.util {
     // source: https://stackoverflow.com/a/32013610
     public class FullyObservableCollection<T> : ObservableCollection<T> where T : INotifyPropertyChanged {
         public event EventHandler<ItemPropertyChangedEventArgs> ItemPropertyChanged;

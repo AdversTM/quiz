@@ -1,6 +1,7 @@
 ﻿using System.Linq;
 using System.Windows;
-using generator.model;
+using common.model;
+using common.viewmodel;
 
 namespace generator.viewmodel {
     public class QuizViewModel : ViewModelBase {

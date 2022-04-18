@@ -2,7 +2,7 @@
 using System.Diagnostics;
 using System.IO;
 using System.Xml.Serialization;
-using generator.model;
+using common.model;
 
 namespace generator.data {
     public class XmlQuizStore : IQuizStore {

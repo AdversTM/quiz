@@ -2,7 +2,7 @@
 using System.Globalization;
 using System.Windows.Data;
 
-namespace generator.util {
+namespace common.util {
     [ValueConversion(typeof(int), typeof(string))]
     public class TimeConverter : IValueConverter {
         public object Convert(object value, Type targetType, object parameter, CultureInfo culture) {

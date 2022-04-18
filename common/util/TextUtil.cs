@@ -1,4 +1,4 @@
-﻿namespace generator.util {
+﻿namespace common.util {
     public static class TextUtil {
         public static string TimeToStr(long sec) {
             if (sec <= 0) return "0s";

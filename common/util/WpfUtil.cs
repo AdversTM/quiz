@@ -4,7 +4,7 @@ using System.Windows.Controls;
 using System.Windows.Media;
 using Microsoft.Win32;
 
-namespace generator.util {
+namespace common.util {
     public static class WpfUtil {
         public static string GetFullPath(HeaderedItemsControl node, string parentDir = "") {
             var result = Convert.ToString(node.Header);

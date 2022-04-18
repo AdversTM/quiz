@@ -1,6 +1,6 @@
 ﻿using System.Windows;
 using System.Windows.Controls;
-using generator.model;
+using common.model;
 
 namespace generator {
     public partial class AnswerWindow {
