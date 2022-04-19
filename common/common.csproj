@@ -88,9 +88,11 @@
     <ItemGroup>
         <Compile Include="data\AESCipher.cs" />
         <Compile Include="data\ICipher.cs" />
-        <Compile Include="data\IQuizStore.cs" />
-        <Compile Include="data\JsonQuizStore.cs" />
-        <Compile Include="data\XmlQuizStore.cs" />
+        <Compile Include="data\IStore.cs" />
+        <Compile Include="data\ISerializer.cs" />
+        <Compile Include="data\QuizStore.cs" />
+        <Compile Include="data\JsonQuizSerializer.cs" />
+        <Compile Include="data\XmlQuizSerializer.cs" />
         <Compile Include="model\Answer.cs" />
         <Compile Include="model\IChangeable.cs" />
         <Compile Include="model\Question.cs" />

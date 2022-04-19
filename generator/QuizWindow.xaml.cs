@@ -60,13 +60,13 @@ namespace generator {
         private void ButtonImport_OnClick(object sender, RoutedEventArgs e) {
             var file = WpfUtil.OpenFileDialog(App.PDir, "Pliki XML (*.xml)|*.xml");
             if (file == null || !EnsureSaved()) return;
-            _model.Quiz = Current.LoadFile(file, new XmlQuizStore());
+            _model.Quiz = Current.LoadFile(file, new QuizStore(new XmlQuizSerializer()));
         }
 
         private void ButtonExport_OnClick(object sender, RoutedEventArgs e) {
             var file = WpfUtil.SaveFileDialog(App.PDir, _model.Quiz.GetFileName(), "Pliki XML (*.xml)|*.xml");
             if (file == null) return;
-            Current.SaveFile(file, _model.Quiz, new XmlQuizStore());
+            Current.SaveFile(file, _model.Quiz, new QuizStore(new XmlQuizSerializer()));
         }
 
         private bool EnsureSaved() {

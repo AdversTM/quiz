@@ -1,16 +1,15 @@
 ﻿using System;
 using System.Diagnostics;
 using System.IO;
-using System.Xml.Serialization;
 using common.model;
 
 namespace common.data {
-    public class XmlQuizStore : IQuizStore {
-        private static readonly XmlSerializer QuizSerializer = new(typeof(Quiz));
-
+    public class QuizStore : IStore<Quiz> {
+        private readonly ISerializer<Quiz> _serializer;
         private readonly ICipher _cipher;
 
-        public XmlQuizStore(ICipher cipher = null) {
+        public QuizStore(ISerializer<Quiz> serializer, ICipher cipher = null) {
+            _serializer = serializer;
             _cipher = cipher;
         }
 
@@ -21,10 +20,10 @@ namespace common.data {
             try {
                 using var stream = File.OpenRead(file);
                 if (_cipher == null)
-                    quiz = QuizSerializer.Deserialize(stream) as Quiz;
+                    quiz = _serializer.Deserialize(stream);
                 else {
                     using var cs = _cipher.DecryptStream(stream);
-                    quiz = QuizSerializer.Deserialize(cs) as Quiz;
+                    quiz = _serializer.Deserialize(cs);
                 }
             }
             catch (Exception e) {
@@ -38,10 +37,10 @@ namespace common.data {
             using var stream = File.Create(file);
             try {
                 if (_cipher == null)
-                    QuizSerializer.Serialize(stream, quiz);
+                    _serializer.Serialize(stream, quiz);
                 else {
                     using var cs = _cipher.EncryptStream(stream);
-                    QuizSerializer.Serialize(cs, quiz);
+                    _serializer.Serialize(cs, quiz);
                 }
 
                 return true;
