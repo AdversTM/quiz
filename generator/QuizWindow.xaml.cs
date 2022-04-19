@@ -49,7 +49,7 @@ namespace generator {
         private void ButtonSave_OnClick(object sender, RoutedEventArgs e) {
             var file = WpfUtil.SaveFileDialog(App.PDir, _model.Quiz.GetFileName());
             if (file == null || !Current.SaveFile(file, _model.Quiz)) return;
-            _model.Quiz = _model.Quiz;
+            _model.Quiz.HasChanged = false;
         }
 
         private void ButtonClose_OnClick(object sender, RoutedEventArgs e) {
@@ -67,10 +67,11 @@ namespace generator {
             var file = WpfUtil.SaveFileDialog(App.PDir, _model.Quiz.GetFileName(), "Pliki XML (*.xml)|*.xml");
             if (file == null) return;
             Current.SaveFile(file, _model.Quiz, new QuizStore(new XmlQuizSerializer()));
+            _model.Quiz.HasChanged = false;
         }
 
         private bool EnsureSaved() {
-            if (!_model.HasChanged) return true;
+            if (!_model.Quiz.HasChanged) return true;
             var res = MessageBox.Show("Quiz posiada niezapisane zmiany, czy na pewno chcesz kontynuować?",
                 "Niezapisane zmiany", MessageBoxButton.YesNo, MessageBoxImage.Warning, MessageBoxResult.No);
             return res == MessageBoxResult.Yes;

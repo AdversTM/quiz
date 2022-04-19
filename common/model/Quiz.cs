@@ -1,14 +1,20 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Linq;
+using System.Runtime.CompilerServices;
+using System.Text.Json.Serialization;
 using System.Text.RegularExpressions;
+using System.Xml.Serialization;
 using common.util;
 using common.viewmodel;
 
 namespace common.model {
     public class Quiz : ViewModelBase, ICloneable {
         private long _time;
-        public string Name { get; set; }
+        private string _name;
+
+        private bool _hasChanged;
+
         public FullyObservableCollection<Question> Questions { get; set; }
 
         public long Time {
@@ -16,6 +22,27 @@ namespace common.model {
             set {
                 _time = value;
                 OnPropertyChanged();
+            }
+        }
+
+        public string Name {
+            get => _name;
+            set {
+                _name = value;
+                OnPropertyChanged();
+            }
+        }
+
+        [XmlIgnore]
+        [JsonIgnore]
+        public bool HasChanged {
+            get { return _hasChanged || Questions.Any(a => a.HasChanged); }
+            set {
+                _hasChanged = value;
+                if (value) return;
+
+                foreach (var a in Questions)
+                    a.HasChanged = false;
             }
         }
 
@@ -34,7 +61,7 @@ namespace common.model {
 
         public override bool Equals(object obj) {
             if (obj is not Quiz o) return false;
-            return Questions.SequenceEqual(o.Questions) && Time == o.Time;
+            return Name == o.Name && Questions.SequenceEqual(o.Questions) && Time == o.Time;
         }
 
         public object Clone() {
@@ -43,6 +70,11 @@ namespace common.model {
 
         public override string ToString() {
             return $"{Name} ({Questions.Count} pytań, {TextUtil.TimeToStr(Time)})";
+        }
+
+        public override void OnPropertyChanged([CallerMemberName] string name = null) {
+            base.OnPropertyChanged(name);
+            HasChanged = true;
         }
     }
 }

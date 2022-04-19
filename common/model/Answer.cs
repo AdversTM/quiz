@@ -1,9 +1,29 @@
 ﻿using System;
+using System.Text.Json.Serialization;
+using System.Xml.Serialization;
 
 namespace common.model {
     public class Answer : ICloneable {
-        public string Text { get; set; }
-        public bool IsCorrect { get; set; }
+        private string _text;
+        private bool _isCorrect;
+
+        public string Text {
+            get => _text;
+            set {
+                _text = value;
+                HasChanged = true;
+            }
+        }
+
+        public bool IsCorrect {
+            get => _isCorrect;
+            set {
+                _isCorrect = value;
+                HasChanged = true;
+            }
+        }
+
+        [XmlIgnore] [JsonIgnore] public bool HasChanged { get; set; }
 
         public Answer() {
         }

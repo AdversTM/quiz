@@ -7,15 +7,13 @@ namespace generator.viewmodel {
     public class QuizViewModel : ViewModelBase {
         private Quiz _quiz;
         private Question _currentQuestion;
-        private Quiz SavedQuiz { get; set; }
-        public bool HasChanged => !SavedQuiz.Equals(Quiz);
 
         public Quiz Quiz {
             get => _quiz;
             set {
                 _quiz = value;
-                SavedQuiz = (Quiz)Quiz.Clone();
                 CurrentQuestion = value.Questions.Last();
+                _quiz.HasChanged = false;
                 OnPropertyChanged();
             }
         }
@@ -27,7 +25,7 @@ namespace generator.viewmodel {
                 OnPropertyChanged();
             }
         }
-        
+
         public void AddQuestion(Question q) {
             Quiz.Questions.Add(q);
             CurrentQuestion = q;

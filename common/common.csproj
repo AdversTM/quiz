@@ -94,7 +94,6 @@
         <Compile Include="data\JsonQuizSerializer.cs" />
         <Compile Include="data\XmlQuizSerializer.cs" />
         <Compile Include="model\Answer.cs" />
-        <Compile Include="model\IChangeable.cs" />
         <Compile Include="model\Question.cs" />
         <Compile Include="model\Quiz.cs" />
         <Compile Include="util\CollectionUtil.cs" />

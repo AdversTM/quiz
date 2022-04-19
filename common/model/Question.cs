@@ -7,11 +7,11 @@ using common.util;
 using common.viewmodel;
 
 namespace common.model {
-    public class Question : ViewModelBase, IComparable<Question>, ICloneable, IChangeable {
+    public class Question : ViewModelBase, IComparable<Question>, ICloneable {
         private string _text;
         private Answer[] _answers;
 
-        [XmlIgnore] [JsonIgnore] [field: NonSerialized] public bool HasChanged { get; set; }
+        private bool _hasChanged;
 
         public string Text {
             get => _text;
@@ -26,6 +26,19 @@ namespace common.model {
             set {
                 _answers = value;
                 OnPropertyChanged();
+            }
+        }
+
+        [XmlIgnore]
+        [JsonIgnore]
+        public bool HasChanged {
+            get { return _hasChanged || _answers.Any(a => a.HasChanged); }
+            set {
+                _hasChanged = value;
+                if (value) return;
+
+                foreach (var a in _answers)
+                    a.HasChanged = false;
             }
         }
 
