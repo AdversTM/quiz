@@ -1,5 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
+﻿using System.Collections.Generic;
 using System.Linq;
 using System.Runtime.CompilerServices;
 using System.Text.Json.Serialization;
@@ -9,7 +8,7 @@ using common.util;
 using common.viewmodel;
 
 namespace common.model {
-    public class Quiz : ViewModelBase, ICloneable {
+    public class Quiz : ViewModelBase {
         private long _time;
         private string _name;
 
@@ -62,10 +61,6 @@ namespace common.model {
         public override bool Equals(object obj) {
             if (obj is not Quiz o) return false;
             return Name == o.Name && Questions.SequenceEqual(o.Questions) && Time == o.Time;
-        }
-
-        public object Clone() {
-            return new Quiz(Name, Questions.Clone(), Time);
         }
 
         public override string ToString() {

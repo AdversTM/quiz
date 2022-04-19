@@ -1,4 +1,5 @@
 ﻿using System.ComponentModel;
+using System.Linq;
 using System.Windows;
 using System.Windows.Controls;
 using System.Windows.Controls.Primitives;
@@ -23,7 +24,12 @@ namespace generator {
 
         private void Selector_OnSelectionChanged(object sender, SelectionChangedEventArgs e) {
             if (e.Source is not Selector sel) return;
-            _model.CurrentQuestion = sel.SelectedItem as Question;
+            var q = sel.SelectedItem as Question;
+            if (ReferenceEquals(_model.CurrentQuestion, q)) return;
+            if (EnsureCorrect())
+                _model.CurrentQuestion = q;
+            else
+                sel.SelectedItem = e.RemovedItems[0];
         }
 
         private void ButtonAdd_OnClick(object sender, RoutedEventArgs e) {
@@ -47,7 +53,8 @@ namespace generator {
         }
 
         private void ButtonSave_OnClick(object sender, RoutedEventArgs e) {
-            var file = WpfUtil.SaveFileDialog(App.PDir, _model.Quiz.GetFileName());
+            if (!EnsureCorrect()) return;
+                var file = WpfUtil.SaveFileDialog(App.PDir, _model.Quiz.GetFileName());
             if (file == null || !Current.SaveFile(file, _model.Quiz)) return;
             _model.Quiz.HasChanged = false;
         }
@@ -75,6 +82,35 @@ namespace generator {
             var res = MessageBox.Show("Quiz posiada niezapisane zmiany, czy na pewno chcesz kontynuować?",
                 "Niezapisane zmiany", MessageBoxButton.YesNo, MessageBoxImage.Warning, MessageBoxResult.No);
             return res == MessageBoxResult.Yes;
+        }
+
+        private bool EnsureCorrect() {
+            var q = _model.CurrentQuestion;
+            var c = q.CorrectAnswers;
+            
+            string msg;
+            if (q.Text.Trim() == "")
+                msg = "Treść pytania nie może być pusta!";
+            else if (q.Answers.Any(a => a?.Text == null || a.Text.Trim() == ""))
+                msg = "Treść odpowiedzi nie może być pusta!";
+            else if (q.Answers.Select(e => e?.Text).Distinct().Count() != 4)
+                msg = "Odpowiedzi nie mogą się powtarzać!";
+            else if (_model.Quiz.Questions.Any(e => e.Text == q.Text && !ReferenceEquals(e, q)))
+                msg = "Pytania nie mogą się powtarzać!";
+            else
+                msg = c switch {
+                    0 => "Pytanie musi mieć conajmniej 1 poprawną odpowiedź!",
+                    4 => "Pytanie musi mieć conajmniej 1 niepoprawną odpowiedź!",
+                    _ => null
+                };
+
+            if (msg == null) return true;
+
+            if (!_model.Quiz.Questions.Contains(q))
+                return true;
+            
+            MessageBox.Show(msg, "Błąd", MessageBoxButton.OK, MessageBoxImage.Error);
+            return false;
         }
 
         private void OnQuizChanged(object sender, PropertyChangedEventArgs e) {
