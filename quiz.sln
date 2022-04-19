@@ -4,6 +4,8 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "quiz", "quiz\quiz.csproj", 
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "generator", "generator\generator.csproj", "{8A994DDC-E9F6-4078-9FD9-58404833049E}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "common", "common\common.csproj", "{102A0BBF-5A12-4417-B7B3-A3D1A381CA1E}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -18,5 +20,9 @@ Global
 		{8A994DDC-E9F6-4078-9FD9-58404833049E}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{8A994DDC-E9F6-4078-9FD9-58404833049E}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{8A994DDC-E9F6-4078-9FD9-58404833049E}.Release|Any CPU.Build.0 = Release|Any CPU
+		{102A0BBF-5A12-4417-B7B3-A3D1A381CA1E}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{102A0BBF-5A12-4417-B7B3-A3D1A381CA1E}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{102A0BBF-5A12-4417-B7B3-A3D1A381CA1E}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{102A0BBF-5A12-4417-B7B3-A3D1A381CA1E}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 EndGlobal

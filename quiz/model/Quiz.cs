@@ -1,6 +1,6 @@
 ﻿using System.Collections.Generic;
 using System.Linq;
-using quiz.util;
+using common.util;
 
 namespace quiz.model {
     public class Quiz {

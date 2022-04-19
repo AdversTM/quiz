@@ -3,10 +3,52 @@
         xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
         xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
-        xmlns:local="clr-namespace:quiz"
+        xmlns:viewmodel="clr-namespace:quiz.viewmodel"
+        xmlns:util="clr-namespace:common.util;assembly=common"
         mc:Ignorable="d"
-        Title="MainWindow" Height="350" Width="525">
-    <Grid>
+        Title="Quiz Solver" Height="250" MinHeight="200" Width="400" MinWidth="350"
+        d:DataContext="{viewmodel:QuizViewModel}">
+    <Window.Resources>
+        <util:TimeConverter x:Key="TimeConverter" />
         
+        <Style TargetType="Button">
+            <Setter Property="Margin" Value="20 10" />
+            <Setter Property="Padding" Value="20" />
+        </Style>
+        <Style TargetType="TextBlock">
+            <Setter Property="VerticalAlignment" Value="Center" />
+        </Style>
+    </Window.Resources>
+    <Grid>
+        <Grid.RowDefinitions>
+            <RowDefinition Height="1*" />
+            <RowDefinition Height="1*" />
+        </Grid.RowDefinitions>
+
+        <Grid Grid.Row="0" Margin="20 30 20 10">
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="1*" />
+                <ColumnDefinition Width="4*" />
+            </Grid.ColumnDefinitions>
+
+            <Grid.RowDefinitions>
+                <RowDefinition />
+                <RowDefinition />
+                <RowDefinition />
+            </Grid.RowDefinitions>
+
+            <TextBlock Grid.Column="0" Grid.Row="0" Text="Nazwa:" />
+            <TextBlock Grid.Column="0" Grid.Row="1" Text="Czas:" />
+            <TextBlock Grid.Column="0" Grid.Row="2" Text="Pytania:" />
+
+            <TextBlock Grid.Column="1" Grid.Row="0" Text="{Binding Quiz.Name}" />
+            <TextBlock Grid.Column="1" Grid.Row="1" Text="{Binding Quiz.Time, Converter={StaticResource TimeConverter}}" />
+            <TextBlock Grid.Column="1" Grid.Row="2" Text="{Binding Quiz.Questions.Count}" />
+
+        </Grid>
+
+        <StackPanel Grid.Row="1" VerticalAlignment="Center" HorizontalAlignment="Center">
+            <Button Click="ButtonStart_OnClick">Rozpocznij</Button>
+        </StackPanel>
     </Grid>
 </Window>
