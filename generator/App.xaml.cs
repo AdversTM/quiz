@@ -1,8 +1,8 @@
 ﻿using System;
 using System.IO;
 using System.Windows;
+using common.data;
 using common.model;
-using generator.data;
 
 namespace generator {
     public partial class App {
@@ -51,7 +51,5 @@ namespace generator {
             _quizWindow = null;
             MainWindow?.Show();
         }
-
-        
     }
 }

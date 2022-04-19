@@ -1,6 +1,6 @@
 ﻿using common.model;
 
-namespace generator.data {
+namespace common.data {
     public interface IQuizStore {
         Quiz Load(string file);
 

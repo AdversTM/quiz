@@ -29,7 +29,7 @@ namespace common.model {
         }
 
         public string GetFileName() {
-            return Regex.Replace(Name.Replace(" ", "_"), "\\/:*?\"<>|", "");
+            return Regex.Replace(Name.Replace(" ", "_"), "[\\/:*?\"<>|]", "");
         }
 
         public override bool Equals(object obj) {

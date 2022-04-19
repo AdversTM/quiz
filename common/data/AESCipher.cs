@@ -2,7 +2,7 @@
 using System.Security.Cryptography;
 using System.Text;
 
-namespace generator.data {
+namespace common.data {
     public class AESCipher : ICipher {
         private byte[] Key { get; set; }
         private byte[] IV { get; set; }

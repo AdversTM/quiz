@@ -1,16 +1,14 @@
 ﻿using System;
 using System.Diagnostics;
 using System.IO;
-using System.Xml.Serialization;
+using System.Text.Json;
 using common.model;
 
 namespace common.data {
-    public class XmlQuizStore : IQuizStore {
-        private static readonly XmlSerializer QuizSerializer = new(typeof(Quiz));
-
+    public class JsonQuizStore : IQuizStore {
         private readonly ICipher _cipher;
 
-        public XmlQuizStore(ICipher cipher = null) {
+        public JsonQuizStore(ICipher cipher = null) {
             _cipher = cipher;
         }
 
@@ -21,10 +19,10 @@ namespace common.data {
             try {
                 using var stream = File.OpenRead(file);
                 if (_cipher == null)
-                    quiz = QuizSerializer.Deserialize(stream) as Quiz;
+                    quiz = JsonSerializer.Deserialize<Quiz>(stream);
                 else {
                     using var cs = _cipher.DecryptStream(stream);
-                    quiz = QuizSerializer.Deserialize(cs) as Quiz;
+                    quiz = JsonSerializer.Deserialize<Quiz>(cs);
                 }
             }
             catch (Exception e) {
@@ -38,10 +36,10 @@ namespace common.data {
             using var stream = File.Create(file);
             try {
                 if (_cipher == null)
-                    QuizSerializer.Serialize(stream, quiz);
+                    JsonSerializer.Serialize(stream, quiz);
                 else {
                     using var cs = _cipher.EncryptStream(stream);
-                    QuizSerializer.Serialize(cs, quiz);
+                    JsonSerializer.Serialize(cs, quiz);
                 }
 
                 return true;

@@ -1,6 +1,8 @@
 ﻿using System;
 using System.Linq;
 using System.Runtime.CompilerServices;
+using System.Text.Json.Serialization;
+using System.Xml.Serialization;
 using common.util;
 using common.viewmodel;
 
@@ -9,7 +11,7 @@ namespace common.model {
         private string _text;
         private Answer[] _answers;
 
-        [field: NonSerialized] public bool HasChanged { get; set; }
+        [XmlIgnore] [JsonIgnore] [field: NonSerialized] public bool HasChanged { get; set; }
 
         public string Text {
             get => _text;
@@ -26,6 +28,8 @@ namespace common.model {
                 OnPropertyChanged();
             }
         }
+
+        public int CorrectAnswers => _answers.Count(e => e.IsCorrect);
 
         public Question() : this("", new Answer[4]) {
             for (var i = 0; i < Answers.Length; i++)

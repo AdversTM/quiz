@@ -1,0 +1,183 @@
+<?xml version="1.0"?>
+<Quiz xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema">
+  <Name>Jaka jest stolica?</Name>
+  <Questions>
+    <Question>
+      <HasChanged>true</HasChanged>
+      <Text>Jaka jest stolica Wielkiej Brytanii?</Text>
+      <Answers>
+        <Answer>
+          <Text>Londyn</Text>
+          <IsCorrect>true</IsCorrect>
+        </Answer>
+        <Answer>
+          <Text>Reading</Text>
+          <IsCorrect>false</IsCorrect>
+        </Answer>
+        <Answer>
+          <Text>Amsterdam</Text>
+          <IsCorrect>false</IsCorrect>
+        </Answer>
+        <Answer>
+          <Text>Devon</Text>
+          <IsCorrect>false</IsCorrect>
+        </Answer>
+      </Answers>
+    </Question>
+    <Question>
+      <HasChanged>true</HasChanged>
+      <Text>Jaka jest stolica Polski?</Text>
+      <Answers>
+        <Answer>
+          <Text>Kraków</Text>
+          <IsCorrect>false</IsCorrect>
+        </Answer>
+        <Answer>
+          <Text>Warszawa</Text>
+          <IsCorrect>true</IsCorrect>
+        </Answer>
+        <Answer>
+          <Text>Poznań</Text>
+          <IsCorrect>false</IsCorrect>
+        </Answer>
+        <Answer>
+          <Text>Wrocław</Text>
+          <IsCorrect>false</IsCorrect>
+        </Answer>
+      </Answers>
+    </Question>
+    <Question>
+      <HasChanged>true</HasChanged>
+      <Text>Jaka jest stolica Bawarii w Niemczech?</Text>
+      <Answers>
+        <Answer>
+          <Text>Berlin</Text>
+          <IsCorrect>false</IsCorrect>
+        </Answer>
+        <Answer>
+          <Text>Norymberga</Text>
+          <IsCorrect>false</IsCorrect>
+        </Answer>
+        <Answer>
+          <Text>Monachium</Text>
+          <IsCorrect>true</IsCorrect>
+        </Answer>
+        <Answer>
+          <Text>Kolonia</Text>
+          <IsCorrect>false</IsCorrect>
+        </Answer>
+      </Answers>
+    </Question>
+    <Question>
+      <HasChanged>true</HasChanged>
+      <Text>Jaka jest stolica Województwa Mazowieckiego?</Text>
+      <Answers>
+        <Answer>
+          <Text>Warszawa</Text>
+          <IsCorrect>true</IsCorrect>
+        </Answer>
+        <Answer>
+          <Text>Radom</Text>
+          <IsCorrect>false</IsCorrect>
+        </Answer>
+        <Answer>
+          <Text>Płock</Text>
+          <IsCorrect>false</IsCorrect>
+        </Answer>
+        <Answer>
+          <Text>Siedlce</Text>
+          <IsCorrect>false</IsCorrect>
+        </Answer>
+      </Answers>
+    </Question>
+    <Question>
+      <HasChanged>true</HasChanged>
+      <Text>Jaka jest stolica Województwa Lubuskiego?</Text>
+      <Answers>
+        <Answer>
+          <Text>Zielona Góra</Text>
+          <IsCorrect>true</IsCorrect>
+        </Answer>
+        <Answer>
+          <Text>Świebodzin</Text>
+          <IsCorrect>false</IsCorrect>
+        </Answer>
+        <Answer>
+          <Text>Strzelce Krajeńskie</Text>
+          <IsCorrect>false</IsCorrect>
+        </Answer>
+        <Answer>
+          <Text>Gorzów Wielkopolski</Text>
+          <IsCorrect>true</IsCorrect>
+        </Answer>
+      </Answers>
+    </Question>
+    <Question>
+      <HasChanged>true</HasChanged>
+      <Text>Jaka jest stolica Stolica Kaliforni w USA?</Text>
+      <Answers>
+        <Answer>
+          <Text>Los Angeles</Text>
+          <IsCorrect>false</IsCorrect>
+        </Answer>
+        <Answer>
+          <Text>Sacramento</Text>
+          <IsCorrect>true</IsCorrect>
+        </Answer>
+        <Answer>
+          <Text>San Francisco</Text>
+          <IsCorrect>false</IsCorrect>
+        </Answer>
+        <Answer>
+          <Text>San Jose</Text>
+          <IsCorrect>false</IsCorrect>
+        </Answer>
+      </Answers>
+    </Question>
+    <Question>
+      <HasChanged>true</HasChanged>
+      <Text>Jaka jest stolica Rosji?</Text>
+      <Answers>
+        <Answer>
+          <Text>Sankt Petersburg</Text>
+          <IsCorrect>false</IsCorrect>
+        </Answer>
+        <Answer>
+          <Text>Kijów</Text>
+          <IsCorrect>false</IsCorrect>
+        </Answer>
+        <Answer>
+          <Text>Kazań</Text>
+          <IsCorrect>false</IsCorrect>
+        </Answer>
+        <Answer>
+          <Text>Moskwa</Text>
+          <IsCorrect>true</IsCorrect>
+        </Answer>
+      </Answers>
+    </Question>
+    <Question>
+      <HasChanged>true</HasChanged>
+      <Text>Jaka jest stolica Województwa Kujawsko-Pomorskiego?</Text>
+      <Answers>
+        <Answer>
+          <Text>Toruń</Text>
+          <IsCorrect>true</IsCorrect>
+        </Answer>
+        <Answer>
+          <Text>Grudziądz</Text>
+          <IsCorrect>false</IsCorrect>
+        </Answer>
+        <Answer>
+          <Text>Bydgoszcz</Text>
+          <IsCorrect>true</IsCorrect>
+        </Answer>
+        <Answer>
+          <Text>Inowrocław</Text>
+          <IsCorrect>false</IsCorrect>
+        </Answer>
+      </Answers>
+    </Question>
+  </Questions>
+  <Time>300</Time>
+</Quiz>
